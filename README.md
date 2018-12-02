@@ -1,5 +1,4 @@
 # User RESTfull api
-====================
 
 ## Build technologies:
 
