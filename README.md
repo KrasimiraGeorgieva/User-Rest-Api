@@ -19,16 +19,16 @@ Make sure you download all the dependencies (packages) required for the technolo
 4. Open a shell / command prompt / PowerShell window in that directory (shift + right click --> open command window here)
 5. Enter the `php composer.phar install` or `composer install` command to restore its **Composer** dependencies (described in `composer.json`)
 
- 5.1. In case you have composer globaly and enter command `composer install` you have to provide parameters from parameters.yml manual
- * database_port - press `Enter`
- * database_name - press `Enter`
- * database_root - press `Enter`
- * database_password - press `Enter` or `enter the password`
- * mailer_transport - press `Enter`
- * mailer_host - press `Enter`
- * mailer_user - press `Enter`
- * mailer_password - press `Enter`
- * secret - press `Enter`
+5.1. In case you have composer globaly and enter command `composer install` you have to provide parameters from parameters.yml manual
+* database_port - press `Enter`
+* database_name - press `Enter`
+* database_root - press `Enter`
+* database_password - press `Enter` or `enter the password`
+* mailer_transport - press `Enter`
+* mailer_host - press `Enter`
+* mailer_user - press `Enter`
+* mailer_password - press `Enter`
+* secret - press `Enter`
 
 6. Enter the `php bin/console doctrine:database:create` command
 7. Enter the `php bin/console doctrine:schema:update --force` command
@@ -54,11 +54,11 @@ The **User API** can be used by Postman app.
 
 ### Method | Route
 ```
--------------------------------------------------------------------------
-|GET	|	/api/v1/users 	 	|	Retrieves a list of users			|
-|POST	|	/api/v1/users 		|	Creates a new user					|
-|GET 	|	/api/v1/users/{id}	|	Retrieves a specific user by id		|
-|PUT	|	/api/v1/users/{id}	|	Updates user by id					|
-|DELETE	|	/api/v1/users/{id}	|	Deletes user by id					|
--------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+|GET	|	/api/v1/users 	 	|	Retrieves a list of users				|
+|POST	|	/api/v1/users 		|	Creates a new user						|
+|GET 	|	/api/v1/users/{id}	|	Retrieves a specific user by id			|
+|PUT	|	/api/v1/users/{id}	|	Updates user by id						|
+|DELETE	|	/api/v1/users/{id}	|	Deletes user by id						|
+-----------------------------------------------------------------------------
 ```
