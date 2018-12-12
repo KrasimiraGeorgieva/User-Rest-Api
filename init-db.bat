@@ -2,10 +2,11 @@
 
 echo Initializing database...
 
-php composer.phar install --no-scripts --no-progress -q
+php composer.phar install  --no-scripts --no-progress -q
 
 php bin/console doctrine:database:create --if-not-exists
 php bin/console doctrine:schema:update --force
+php bin/console server:run
 
 echo Successfully initialized database!
 
