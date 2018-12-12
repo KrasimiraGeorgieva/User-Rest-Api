@@ -55,10 +55,10 @@ The **User API** can be used by Postman app.
 ### Method | Route
 ```
 -----------------------------------------------------------------------------
-|GET	|	/api/v1/users 	 	|	Retrieves a list of users				|
-|POST	|	/api/v1/users 		|	Creates a new user						|
-|GET 	|	/api/v1/users/{id}	|	Retrieves a specific user by id			|
-|PUT	|	/api/v1/users/{id}	|	Updates user by id						|
-|DELETE	|	/api/v1/users/{id}	|	Deletes user by id						|
+|GET	  |	/api/v1/users 	 	   |	Retrieves a list of users                 |
+|POST	  |	/api/v1/users 		   |	Creates a new user						            |
+|GET 	  |	/api/v1/users/{id}	 |	Retrieves a specific user by id			      |
+|PUT	  |	/api/v1/users/{id}	 |	Updates user by id						            |
+|DELETE	|	/api/v1/users/{id}	 |	Deletes user by id						            |
 -----------------------------------------------------------------------------
 ```
