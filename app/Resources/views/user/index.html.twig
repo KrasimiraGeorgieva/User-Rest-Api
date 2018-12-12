@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Users list</h1>
+        <ul>
+            <li>
+                <a href="{{ path('users_new') }}">new user</a>
+            </li>
+        </ul>
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Email</th>
+                <th scope="col">Given Name</th>
+                <th scope="col">Family Name</th>
+                <th scope="col">Created</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i, user in users %}
+            <tr>
+                <td><a href="{{ path('users_show', { 'id': user.id }) }}">{{ i + 1 }}</a></td>
+                <td class="row">{{ user.email }}</td>
+                <td class="row">{{ user.givenName }}</td>
+                <td class="row">{{ user.familyName }}</td>
+                <td class="row">{% if user.created %}{{ user.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="row">
+                    <ul>
+                        <li>
+                            <a href="{{ path('users_show', { 'id': user.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('users_edit', { 'id': user.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('users_delete', { 'id': user.id }) }}">delete</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+{% endblock %}

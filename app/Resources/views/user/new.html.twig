@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+    <h1>User creation</h1>
+
+    {{ form_start(form) }}
+        <div class="form-group">
+            <div class="list-group list-group-flush">
+                {{ form_widget(form) }}
+                <br />
+                <input class="btn btn-default" type="submit" value="Create" />
+            </div>
+         </div>
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('users_index') }}">Back to home</a>
+        </li>
+    </ul>
+
+    </div>
+{% endblock %}
