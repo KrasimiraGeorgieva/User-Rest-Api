@@ -1,3 +1,8 @@
+user_rest_api:
+    resource: "@UserRestApiBundle/Controller/"
+    type:     annotation
+    prefix:   /api
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

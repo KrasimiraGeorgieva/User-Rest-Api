@@ -1,13 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-            <h1>Welcome!</h1>
-            </div>
+    <div id="container" class="container">
+        <div class="center-block">
+            <h1>Welcome to User REST API!</h1>
+        </div>
 
-
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Web Development API Solution</h4>
+            <p>The API task is to manage a user persistence layer. A user model have the following attributes:</p>
+            <ul>
+                <li>id</li>
+                <li>email</li>
+                <li>givenName</li>
+                <li>familyName</li>
+                <li>created</li>
+            </ul>
+            <hr>
+            <p>It has the ability to persist user information. The API expose functionality to create, read, update
+                and delete (CRUD) models.</p>
         </div>
     </div>
 {% endblock %}

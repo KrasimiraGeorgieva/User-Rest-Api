@@ -3,12 +3,17 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
  *
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+ * @ExclusionPolicy("all")
  */
 class User
 {
@@ -18,6 +23,8 @@ class User
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Expose()
      */
     private $id;
 
@@ -25,6 +32,12 @@ class User
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     *     )
+     * @Expose()
      */
     private $email;
 
@@ -32,6 +45,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="given_name", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Expose()
      */
     private $givenName;
 
@@ -39,6 +54,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="family_name", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Expose()
      */
     private $familyName;
 
@@ -46,8 +63,19 @@ class User
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime")
+     *
+     * @Expose()
      */
     private $created;
+
+    /**
+     * User constructor.
+     * @throws \Exception
+     */
+    public function __construct()
+    {
+        $this->created = new \DateTime('now');
+    }
 
 
     /**
@@ -63,11 +91,11 @@ class User
     /**
      * Set email
      *
-     * @param string $email
+     * @param $email
      *
      * @return User
      */
-    public function setEmail($email): User
+    public function setEmail($email)
     {
         $this->email = $email;
 
@@ -79,7 +107,7 @@ class User
      *
      * @return string
      */
-    public function getEmail():string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -91,7 +119,7 @@ class User
      *
      * @return User
      */
-    public function setGivenName($givenName):User
+    public function setGivenName($givenName)
     {
         $this->givenName = $givenName;
 
@@ -135,11 +163,11 @@ class User
     /**
      * Set created
      *
-     * @param \DateTime $created
+     * @param DateTime $created
      *
      * @return User
      */
-    public function setCreated($created)
+    public function setCreated(DateTime $created)
     {
         $this->created = $created;
 
@@ -155,5 +183,6 @@ class User
     {
         return $this->created;
     }
+
 }
 
