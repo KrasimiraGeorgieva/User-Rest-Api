@@ -4,6 +4,11 @@ namespace AppBundle\tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class ApplicationAvailabilityFunctionalTest
+ *
+ * @package AppBundle\tests
+ */
 class ApplicationAvailabilityFunctionalTest extends WebTestCase
 {
     /**

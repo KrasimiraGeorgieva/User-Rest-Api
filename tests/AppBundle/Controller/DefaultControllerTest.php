@@ -4,6 +4,11 @@ namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class DefaultControllerTest
+ *
+ * @package Tests\AppBundle\Controller
+ */
 class DefaultControllerTest extends WebTestCase
 {
     /**
@@ -15,14 +20,13 @@ class DefaultControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        try{
-        $crawler = $client->request('GET', '/');
+        try {
+            $crawler = $client->request('GET', '/');
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Welcome to User REST API!', $crawler->filter('#container h1')
-            ->text());
-        }
-        catch (\Exception $e){
+            $this->assertEquals(200, $client->getResponse()->getStatusCode());
+            $this->assertContains('Welcome to User REST API!', $crawler->filter('#container h1')
+                ->text());
+        } catch (\Exception $e) {
             $e->getMessage();
         }
     }

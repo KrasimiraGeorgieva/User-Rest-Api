@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class UserController
+ *
  * @package UserRestApiBundle\Controller
  * @Route("/v1")
  */
@@ -31,7 +32,7 @@ class UserController extends Controller
         return new Response(
             $json,
             Response::HTTP_OK,
-            ['content-type' => 'application/json']
+            array('content-type' => 'application/json')
         );
     }
 
@@ -50,7 +51,7 @@ class UserController extends Controller
             return new Response(
                 json_encode(['error' => 'resource not found']),
                 Response::HTTP_NOT_FOUND,
-                ['content-type' => 'application/json']);
+                array('content-type' => 'application/json'));
         }
 
         $serializer = $this->container->get('jms_serializer');
@@ -59,7 +60,7 @@ class UserController extends Controller
         return new Response(
             $userJson,
             Response::HTTP_OK,
-            ['content-type' => 'application/json']
+            array('content-type' => 'application/json')
         );
     }
 
@@ -75,11 +76,11 @@ class UserController extends Controller
         try {
             //process submitted data
             $this->createNewUser($request);
-            return new Response(null,Response::HTTP_CREATED);
+            return new Response(null, Response::HTTP_CREATED);
         } catch (\Exception $e) {
             return new Response(json_encode(['error' => $e->getMessage()]),
                 Response::HTTP_BAD_REQUEST,
-                ['content-type' => 'application/json']
+                array('content-type' => 'application/json')
             );
         }
     }
@@ -95,8 +96,8 @@ class UserController extends Controller
     {
         try {
             $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+
             if (null === $user) {
-                //create new user
                 $this->createNewUser($request);
                 $statusCode = Response::HTTP_CREATED;
             } else {
@@ -105,11 +106,12 @@ class UserController extends Controller
                     'PUT');
                 $statusCode = Response::HTTP_NO_CONTENT;
             }
+
             return new Response(null, $statusCode);
         } catch (\Exception $e) {
-            return new Response(json_encode(['error' => $e->getMessage()]),
+            return new Response(json_encode(array('error' => $e->getMessage())),
                 Response::HTTP_BAD_REQUEST,
-                ['content-type' => 'application/json']
+                array('content-type' => 'application/json')
             );
         }
     }
@@ -120,10 +122,11 @@ class UserController extends Controller
      * @param $id
      * @return Response
      */
-    public function deleteAction(Request $request,int $id)
+    public function deleteAction(Request $request, int $id)
     {
         try {
             $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+
             if (null === $user) {
                 $statusCode = Response::HTTP_NOT_FOUND;
             } else {
@@ -132,11 +135,14 @@ class UserController extends Controller
                 $em->flush();
                 $statusCode = Response::HTTP_NO_CONTENT;
             }
+
             return new Response(null, $statusCode);
+
         } catch (\Exception $e) {
+
             return new Response(json_encode(['error' => $e->getMessage()]),
                 Response::HTTP_BAD_REQUEST,
-                ['content-type' => 'application/json']
+                array('content-type' => 'application/json')
             );
         }
     }
@@ -152,6 +158,7 @@ class UserController extends Controller
     {
         $user = new User();
         $parameters = $request->request->all();
+
         return $this->processForm($user, $parameters, 'POST');
     }
 
@@ -164,25 +171,29 @@ class UserController extends Controller
      * @return array|string
      * @throws \Exception
      */
-    private function processForm($user,$params,$method = 'PUT')
+    private function processForm($user, $params, $method = 'PUT')
     {
-        foreach($params as $param => $paramValue) {
-            if(null === $paramValue || trim($paramValue) === '') {
+        foreach ($params as $param => $paramValue) {
+
+            if (null === $paramValue || trim($paramValue) === '') {
+
                 throw new \Exception("invalid data: $param");
             }
         }
-        if(null === $user) {
+
+        if (null === $user) {
             throw new \Exception('Invalid user id');
         }
+
         $form = $this->createForm(UserType::class, $user, ['method' => $method]);
         $form->submit($params);
-        if ($form->isSubmitted()){
-            //get entity manager
+
+        if ($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
-            return new Response(json_encode($user),Response::HTTP_CREATED);
+            return new Response(json_encode($user), Response::HTTP_CREATED);
         }
         throw new \Exception('Submitted data is invalid');
     }

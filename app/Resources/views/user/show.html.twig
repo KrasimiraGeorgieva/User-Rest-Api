@@ -1,52 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
-<div class="form-group">
-    <h1>User</h1>
-
-    <table class="form-group">
-        <tbody>
-        <tr>
-            <th class="col-sm-3">given name:</th>
-            <td class="col-sm-9">{{ user.givenName }}</td>
-        </tr>
-        <tr>
-            <th class="col-sm-3">family name:</th>
-            <td class="col-sm-9">{{ user.familyName }}</td>
-        </tr>
-            <tr>
-                <th class="col-sm-3">email:</th>
-                <td class="col-sm-9">{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th class="col-sm-3">created:</th>
-                <td class="col-sm-9">{% if user.created %}{{ user.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
     <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-6">
+        <div class="form-group">
+            <h1>User</h1>
 
-                <div class=" col-12 col-sm-6 col-md-6">
-                    <a type="submit" class="btn btn-default" href="{{ path('users_edit', { 'id': user.id }) }}">Edit</a>
-                    <a href="{{ path('rest_api_get_user', { 'id': user.id }) }}" class="btn btn-primary"
-                    >API GET</a>
+            <table class="form-group">
+                <tbody>
+                <tr>
+                    <th class="col-sm-3">given name:</th>
+                    <td class="col-sm-9">{{ user.givenName }}</td>
+                </tr>
+                <tr>
+                    <th class="col-sm-3">family name:</th>
+                    <td class="col-sm-9">{{ user.familyName }}</td>
+                </tr>
+                <tr>
+                    <th class="col-sm-3">email:</th>
+                    <td class="col-sm-9">{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th class="col-sm-3">created:</th>
+                    <td class="col-sm-9">{% if user.created %}{{ user.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-6">
+
+                        <div class=" col-12 col-sm-6 col-md-6">
+                            <a type="submit" class="btn btn-default"
+                               href="{{ path('users_edit', { 'id': user.id }) }}">Edit</a>
+                            <a href="{{ path('rest_api_get_user', { 'id': user.id }) }}" class="btn btn-primary"
+                            >API GET</a>
+                        </div>
+
+                        {{ form_start(delete_form) }}
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                        {{ form_end(delete_form) }}
+                    </div>
                 </div>
-
-                {{ form_start(delete_form) }}
-                <input type="submit" class="btn btn-danger" value="Delete">
-                {{ form_end(delete_form) }}
             </div>
         </div>
+        <ul>
+            <li>
+                <a href="{{ path('users_index') }}">Back to home</a>
+            </li>
+        </ul>
     </div>
-</div>
-    <ul>
-        <li>
-            <a href="{{ path('users_index') }}">Back to home</a>
-        </li>
-    </ul>
-</div>
+
 {% endblock %}

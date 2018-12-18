@@ -6,9 +6,13 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class UserControllerTest
+ *
+ * @package UserRestApiBundle\Tests
+ */
 class UserControllerTest extends WebTestCase
 {
-
     public function test_get_all_expected_status_200()
     {
         // Create a new client to browse the application
@@ -28,20 +32,20 @@ class UserControllerTest extends WebTestCase
         );
     }
 
-    public  function test_notEmpty_data_expected_filled_in_fields()
+    public function test_notEmpty_data_expected_filled_in_fields()
     {
         // Create a new client to browse the application
         $client = static::createClient();
 
         $data = array(
-            'email'  => 'gosho88@yahoo.com',
-            'givenName'  => 'Gosho',
-            'familyName'  => 'Peshev',
+            'email' => 'gosho88@yahoo.com',
+            'givenName' => 'Gosho',
+            'familyName' => 'Peshev',
         );
 
-       $client->request('POST', '/api/v1/users', array($data));
+        $client->request('POST', '/api/v1/users', array($data));
 
-       $this->assertNotEmpty($data);
+        $this->assertNotEmpty($data);
     }
 
     public function test_create_user_expected_status_201()
@@ -76,10 +80,10 @@ class UserControllerTest extends WebTestCase
         try {
             $response = $client->put('http://127.0.0.1:8000/api/v1/users/2', array(
                 'form_params' => array(
-                        'email' => 'stamat@gmail.com',
-                        'givenName' => 'Stamat',
-                        'familyName' => 'Ivanov'
-                    ), 'timeout' => 5
+                    'email' => 'stamat@gmail.com',
+                    'givenName' => 'Stamat',
+                    'familyName' => 'Ivanov'
+                ), 'timeout' => 5
             ));
             $this->assertEquals(204, $response->getStatusCode());
         } catch (\Exception $e) {

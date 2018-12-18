@@ -1,41 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
-    <div class="form-group">
-    <h1>User edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-    <br />
     <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-6">
-                <div class=" col-12 col-sm-6 col-md-6">
-                    <input  class="btn btn-default" type="submit" value="Edit"/>
-                    {#<label>
-                        <a  href="{{ path('rest_api_user_edit', { 'id': user.id }) }}" class="btn btn-primary" >Api PUT</a>
-                    </label>#}
+        <div class="form-group">
+            <h1>User edit</h1>
 
-                    {{ form_end(edit_form) }}
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <br/>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-6">
+                        <div class=" col-12 col-sm-6 col-md-6">
+                            <input class="btn btn-default" type="submit" value="Edit"/>
+
+                            {{ form_end(edit_form) }}
+                        </div>
+
+                        {{ form_start(delete_form) }}
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                        {{ form_end(delete_form) }}
+                    </div>
                 </div>
-
-    {{ form_start(delete_form) }}
-    <input type="submit" class="btn btn-danger" value="Delete">
-    {{ form_end(delete_form) }}
             </div>
         </div>
-    </div>
-    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('users_index') }}">Back to home</a>
-        </li>
-    </ul>
-</div>
+        <ul>
+            <li>
+                <a href="{{ path('users_index') }}">Back to home</a>
+            </li>
+        </ul>
+    </div>
 
 {% endblock %}
-
-
-

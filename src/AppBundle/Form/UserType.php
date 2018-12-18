@@ -9,6 +9,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class UserType
+ *
+ * @package AppBundle\Form
+ */
 class UserType extends AbstractType
 {
     /**
@@ -47,6 +52,5 @@ class UserType extends AbstractType
     public function getBlockPrefix()
     {
         return '';
-
     }
 }

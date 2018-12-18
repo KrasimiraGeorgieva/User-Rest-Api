@@ -1,70 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}User API{% endblock %}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}">
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('user.ico') }}" />
-    </head>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}User API{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('user.ico') }}"/>
+</head>
 
-    <body>
+<body>
 
-    {% block header %}
+{% block header %}
     <nav class="navbar navbar-inverse navbar-fixed-top navbar-collapse" role="navigation">
 
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="{{ path('users_index') }}">User API</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li >
-                        <a class="nav-link" href="{{ path('homepage') }}">Home</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ path('users_index') }}">All Users</a>
-                    </li>
-                    {#<li>
-                        <a class="nav-link list-group-item" href="{{ path('users_new') }}">POST User</a>
-                    </li>#}
-                    {#<li>
-                        <a class="nav-link list-group-item" href="{{ path('users_edit', { 'id': user.id }) }}">PUT User</a>
-                    </li>#}
-                </ul>
-                <ul class="nav navbar-nav pull-right">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ path('users_index') }}">User API</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="nav-link" href="{{ path('homepage') }}">Home</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ path('users_index') }}">All Users</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
                 <li>
                     <a class="nav-link btn-primary" href="{{ path('rest_api_get_users') }}">Api GET All</a>
                 </li>
-                    {#<li class="nav-item pull-right">
-                        <a href="{{ path('rest_api_user_edit', { 'id': user.id }) }}" class="btn-sm btn-primary" >Api PUT</a>
-                    </li>#}
-                </ul>
-            </div>
+            </ul>
+        </div>
 
     </nav>
+{% endblock %}
 
-    {% endblock %}
+{% block body %}{% endblock %}
 
-    {% block body %}{% endblock %}
+{% block footer %}
+    <footer class="container-fluid text-center">
+        <p>&copy; 2018 - Krasimira Georgieva</p>
+        <a href="https://github.com/KrasimiraGeorgieva/User-Rest-Api">Go to GitHub repository</a>
+        <p><span class="glyphicon-envelope" aria-hidden="true"></span>
+            krasimira-georgieva@hotmail.com</p>
+    </footer>
+{% endblock %}
 
-    {% block footer %}
-        <footer class="container-fluid text-center">
-            <p>&copy; 2018 - Krasimira Georgieva</p>
-            <a href="https://github.com/KrasimiraGeorgieva/User-Rest-Api">Go to GitHub repository</a>
-            <p><span class="glyphicon-envelope" aria-hidden="true"></span>
-                krasimira-georgieva@hotmail.com</p>
-        </footer>
-    {% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
+{% endblock %}
 
-    {% block javascripts %}
-        <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
-        <script src="{{ asset('assets/js/moment.min.js') }}"></script>
-        <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
-        <script src="{{ asset('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
-    {% endblock %}
-
-    </body>
+</body>
 </html>

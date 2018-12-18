@@ -138,7 +138,6 @@ class UserController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('users_delete', array('id' => $user->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
