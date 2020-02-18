@@ -1,6 +1,6 @@
 # User RESTfull api
 
-**https://api.user.krasimira-georgieva.com/**
+**https://klg-user-rest-api.herokuapp.com/**
 
 ## Build technologies:
 
